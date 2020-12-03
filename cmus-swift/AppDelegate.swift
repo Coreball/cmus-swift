@@ -20,12 +20,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create the window and set the content view.
         window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+            contentRect: NSRect(x: 0, y: 0, width: 300, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
+        window.titlebarAppearsTransparent = true
+        window.isMovableByWindowBackground = true
+        window.contentAspectRatio = NSSize(width: 1, height: 1)
         window.isReleasedWhenClosed = false
         window.center()
-        window.setFrameAutosaveName("Main Window")
+//        window.setFrameAutosaveName("Main Window") // Disable autosave for now
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
     }

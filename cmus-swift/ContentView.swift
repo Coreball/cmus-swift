@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var metadataData = MetadataData()
+
     var body: some View {
-        Circle().edgesIgnoringSafeArea(.all)
+        Image(nsImage: metadataData.albumArt ?? NSImage())
+            .resizable()
+            .edgesIgnoringSafeArea(.all)
     }
 }
 

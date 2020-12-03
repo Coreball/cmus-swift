@@ -12,6 +12,7 @@
 		3C2728A52578C00E0082B83B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C2728A42578C00E0082B83B /* Assets.xcassets */; };
 		3C2728A82578C00E0082B83B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C2728A72578C00E0082B83B /* Preview Assets.xcassets */; };
 		3C2728AB2578C00E0082B83B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2728A92578C00E0082B83B /* Main.storyboard */; };
+		3C2728B52578CB310082B83B /* MetadataData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2728B42578CB310082B83B /* MetadataData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		3C2728AA2578C00E0082B83B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C2728AC2578C00E0082B83B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C2728AD2578C00E0082B83B /* cmus_swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cmus_swift.entitlements; sourceTree = "<group>"; };
+		3C2728B42578CB310082B83B /* MetadataData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				3C2728AC2578C00E0082B83B /* Info.plist */,
 				3C2728AD2578C00E0082B83B /* cmus_swift.entitlements */,
 				3C2728A62578C00E0082B83B /* Preview Content */,
+				3C2728B42578CB310082B83B /* MetadataData.swift */,
 			);
 			path = "cmus-swift";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2728B52578CB310082B83B /* MetadataData.swift in Sources */,
 				3C2728A32578C00C0082B83B /* ContentView.swift in Sources */,
 				3C2728A12578C00C0082B83B /* AppDelegate.swift in Sources */,
 			);

@@ -9,15 +9,17 @@ import SwiftUI
 import Combine
 
 final class MetadataData: ObservableObject {
+    var filePath: String?
     @Published var albumArt: NSImage?
 
     init() {
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            if let filePath = CmusRemote.filePath() {
-                self.albumArt = CmusRemote.albumArt(for: filePath)
-            } else {
-                print("No file")
-            }
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: updateMetadata)
+    }
+
+    func updateMetadata(timer: Timer) {
+        if let filePath = CmusRemote.filePath(), filePath != self.filePath {
+            self.filePath = filePath
+            self.albumArt = CmusRemote.albumArt(for: filePath)
         }
     }
 }

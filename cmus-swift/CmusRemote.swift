@@ -14,20 +14,38 @@ class CmusRemote {
 
     static func filePath() -> String? {
         let statusLines = getStatus().components(separatedBy: .newlines)
-        guard let fileLine = statusLines.first(where: {$0.hasPrefix("file ")}) else {
+        guard let fileLine = statusLines.first(where: { $0.hasPrefix("file ") }) else {
             return nil
         }
         return String(fileLine.dropFirst("file ".count))
     }
 
     static func albumArt(for trackFilePath: String) -> NSImage? {
-        let asset = AVAsset(url: URL(fileURLWithPath: trackFilePath))
+        let trackFileURL = URL(fileURLWithPath: trackFilePath)
+
+        // Method 1: AVFoundation Metadata
+        let asset = AVAsset(url: trackFileURL)
         let artworkItems = AVMetadataItem.metadataItems(from: asset.commonMetadata, filteredByIdentifier: .commonIdentifierArtwork)
         if let artworkItem = artworkItems.first, let imageData = artworkItem.dataValue {
             return NSImage(data: imageData)
-        } else {
-            return nil
         }
+
+        // Method 2: Search folder for image file
+        let trackFolderURL = trackFileURL.deletingLastPathComponent()
+        let imageExtensions = ["png", "jpg", "jpeg"]
+        do {
+            let folderContents = try FileManager.default.contentsOfDirectory(at: trackFolderURL, includingPropertiesForKeys: nil)
+            let imageURLs = folderContents.filter { imageExtensions.contains($0.pathExtension) }
+            for imageURL in imageURLs { // Try each image file, fall through to third method if none work
+                if let image = NSImage(contentsOf: imageURL) {
+                    return image
+                }
+            }
+        } catch {
+            print(error)
+        }
+
+        return nil
     }
 
     static func getStatus() -> String {

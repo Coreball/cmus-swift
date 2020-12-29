@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
+    var stayOnTop: Bool = false
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
@@ -37,6 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    @IBAction func stayOnTop(_ sender: NSMenuItem) {
+        stayOnTop = !stayOnTop
+        window.level = stayOnTop ? .floating : .normal
+        sender.state = stayOnTop ? .on : .off
+    }
 
 }
 

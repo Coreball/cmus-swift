@@ -13,6 +13,10 @@ class CmusRemote {
     static let cmusURL: URL = URL(fileURLWithPath: "/usr/local/bin/cmus-remote") // Might vary on different systems
     static let metaflacURL: URL = URL(fileURLWithPath: "/usr/local/bin/metaflac")
 
+    static func playPause() {
+        run(arguments: "--pause")
+    }
+
     static func next() {
         run(arguments: "--next")
     }

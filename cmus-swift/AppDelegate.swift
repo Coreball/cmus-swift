@@ -44,5 +44,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sender.state = stayOnTop ? .on : .off
     }
 
+    @IBAction func playPause(_ sender: NSMenuItem) {
+        CmusRemote.playPause()
+    }
+
+    @IBAction func next(_ sender: NSMenuItem) {
+        CmusRemote.next()
+    }
+
+    @IBAction func prev(_ sender: NSMenuItem) {
+        CmusRemote.prev()
+    }
+
 }
 

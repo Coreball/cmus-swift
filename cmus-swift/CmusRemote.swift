@@ -13,8 +13,20 @@ class CmusRemote {
     static let cmusURL: URL = URL(fileURLWithPath: "/usr/local/bin/cmus-remote") // Might vary on different systems
     static let metaflacURL: URL = URL(fileURLWithPath: "/usr/local/bin/metaflac")
 
+    static func next() {
+        run(arguments: "--next")
+    }
+
+    static func prev() {
+        run(arguments: "--prev")
+    }
+
+    static func status() -> String {
+        return runWithOutput(arguments: "--query")
+    }
+
     static func filePath() -> String? {
-        let statusLines = getStatus().components(separatedBy: .newlines)
+        let statusLines = status().components(separatedBy: .newlines)
         guard let fileLine = statusLines.first(where: { $0.hasPrefix("file ") }) else {
             return nil
         }
@@ -65,11 +77,23 @@ class CmusRemote {
         return nil
     }
 
-    static func getStatus() -> String {
+    static func run(arguments: String...) {
+        let task = Process()
+        task.executableURL = cmusURL
+        task.arguments = arguments
+        do {
+            try task.run()
+        } catch {
+            print(error)
+            fatalError("Could not run cmus-remote")
+        }
+    }
+
+    static func runWithOutput(arguments: String...) -> String {
         let outputPipe = Pipe()
         let task = Process()
         task.executableURL = cmusURL
-        task.arguments = ["--query"]
+        task.arguments = arguments
         task.standardOutput = outputPipe
         do {
             try task.run()

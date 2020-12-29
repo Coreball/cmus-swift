@@ -11,6 +11,7 @@ import AVFoundation
 class CmusRemote {
 
     static let cmusURL: URL = URL(fileURLWithPath: "/usr/local/bin/cmus-remote") // Might vary on different systems
+    static let metaflacURL: URL = URL(fileURLWithPath: "/usr/local/bin/metaflac")
 
     static func filePath() -> String? {
         let statusLines = getStatus().components(separatedBy: .newlines)
@@ -23,7 +24,7 @@ class CmusRemote {
     static func albumArt(for trackFilePath: String) -> NSImage? {
         let trackFileURL = URL(fileURLWithPath: trackFilePath)
 
-        // Method 1: AVFoundation Metadata
+        // Method 1: AVFoundation Metadata (no FLAC)
         let asset = AVAsset(url: trackFileURL)
         let artworkItems = AVMetadataItem.metadataItems(from: asset.commonMetadata, filteredByIdentifier: .commonIdentifierArtwork)
         if let artworkItem = artworkItems.first, let imageData = artworkItem.dataValue {
@@ -45,6 +46,22 @@ class CmusRemote {
             print(error)
         }
 
+        // Method 3: metaflac
+        let outputPipe = Pipe()
+        let task = Process()
+        task.executableURL = metaflacURL
+        task.arguments = ["--export-picture-to=-", trackFilePath]
+        task.standardOutput = outputPipe
+        do {
+            try task.run()
+        } catch {
+            print(error)
+        }
+        let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
+        if let image = NSImage(data: outputData) {
+            return image
+        }
+
         return nil
     }
 
@@ -57,9 +74,9 @@ class CmusRemote {
         do {
             try task.run()
         } catch {
+            print(error)
             fatalError("Could not run cmus-remote")
         }
-        task.waitUntilExit()
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
         let output = String(decoding: outputData, as: UTF8.self)
         return output

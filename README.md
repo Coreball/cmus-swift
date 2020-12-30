@@ -1,6 +1,8 @@
 # cmus-swift
 Album art and remote controls for [cmus](https://github.com/cmus/cmus/) on macOS, written in Swift & with [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 
+![Screenshot](screenshot.png)
+
 ## Features
 - album art display using AVFoundation, folder searching, and metaflac
 - familiar bindings for `cmus-remote` control

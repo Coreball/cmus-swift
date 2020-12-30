@@ -56,5 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         CmusRemote.prev()
     }
 
+    @IBAction func seek(_ sender: NSMenuItem) {
+        CmusRemote.seek(seconds: sender.tag)
+    }
+
 }
 

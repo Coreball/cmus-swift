@@ -25,6 +25,11 @@ class CmusRemote {
         run(arguments: "--prev")
     }
 
+    static func seek(seconds: Int) {
+        let secondsString = seconds < 0 ? "\(seconds)" : "+\(seconds)"
+        run(arguments: "--seek", secondsString)
+    }
+
     static func status() -> String {
         return runWithOutput(arguments: "--query")
     }

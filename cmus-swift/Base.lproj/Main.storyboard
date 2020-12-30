@@ -172,6 +172,31 @@
                                                 <action selector="prev:" target="Voe-Tx-rLC" id="hE0-Xa-vpw"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="B3N-7g-iLr"/>
+                                        <menuItem title="Seek +1:00" tag="60" keyEquivalent="." id="sLh-EB-Tr4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="seek:" target="Voe-Tx-rLC" id="Aen-0B-8Af"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Seek +0:05" tag="5" keyEquivalent="l" id="YFt-aJ-RHV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="seek:" target="Voe-Tx-rLC" id="9y0-A1-OPO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Seek -1:00" tag="-60" keyEquivalent="," id="cAk-Up-arq">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="seek:" target="Voe-Tx-rLC" id="Z0S-r8-ted"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Seek -0:05" tag="-5" keyEquivalent="h" id="csO-C6-Wi4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="seek:" target="Voe-Tx-rLC" id="3wP-cb-UuS"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>

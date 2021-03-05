@@ -17,6 +17,10 @@ class CmusRemote {
         run(arguments: "--pause")
     }
 
+    static func play() {
+        run(arguments: "--play")
+    }
+
     static func next() {
         run(arguments: "--next")
     }

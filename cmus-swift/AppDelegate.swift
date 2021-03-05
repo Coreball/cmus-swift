@@ -48,6 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         CmusRemote.playPause()
     }
 
+    @IBAction func play(_ sender: NSMenuItem) {
+        CmusRemote.play()
+    }
+
     @IBAction func next(_ sender: NSMenuItem) {
         CmusRemote.next()
     }

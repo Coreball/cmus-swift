@@ -1,5 +1,5 @@
 # cmus-swift
-Album art and remote controls for [cmus](https://github.com/cmus/cmus/) on macOS, written in Swift & with [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+Album art and remote controls for [cmus](https://github.com/cmus/cmus/) on macOS, written in Swift
 
 ![Screenshot](screenshot.png)
 
@@ -7,6 +7,7 @@ Album art and remote controls for [cmus](https://github.com/cmus/cmus/) on macOS
 - album art display using AVFoundation, folder searching, and metaflac
 - familiar bindings for `cmus-remote` control
   - **c** - play/pause
+  - **x** - replay current track from beginning (play)
   - **b** - next
   - **z** - previous
   - **.** - seek +1:00

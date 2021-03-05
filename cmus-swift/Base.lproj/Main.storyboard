@@ -160,6 +160,12 @@
                                                 <action selector="playPause:" target="Voe-Tx-rLC" id="Try-V5-bDl"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Play" keyEquivalent="x" id="jAU-Ke-TXY">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="play:" target="Voe-Tx-rLC" id="PKy-Q4-SgP"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Next" keyEquivalent="b" id="4DW-LL-N39">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

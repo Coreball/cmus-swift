@@ -16,7 +16,7 @@ final class MetadataData: ObservableObject {
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: updateMetadata)
     }
 
-    func updateMetadata(timer: Timer) {
+    func updateMetadata(timer: Timer?) {
         if let filePath = CmusRemote.filePath(), filePath != self.filePath {
             self.filePath = filePath
             self.albumArt = CmusRemote.albumArt(for: filePath)

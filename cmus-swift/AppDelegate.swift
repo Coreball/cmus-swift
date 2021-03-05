@@ -14,10 +14,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
     var stayOnTop: Bool = false
+    var metadataData: MetadataData!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
+        metadataData = contentView.metadataData
 
         // Create the window and set the content view.
         window = NSWindow(
@@ -54,14 +56,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func next(_ sender: NSMenuItem) {
         CmusRemote.next()
+        metadataData.updateMetadata(timer: nil)
     }
 
     @IBAction func prev(_ sender: NSMenuItem) {
         CmusRemote.prev()
+        metadataData.updateMetadata(timer: nil)
     }
 
     @IBAction func seek(_ sender: NSMenuItem) {
         CmusRemote.seek(seconds: sender.tag)
+        metadataData.updateMetadata(timer: nil)
     }
 
 }

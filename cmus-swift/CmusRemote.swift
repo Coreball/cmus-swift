@@ -83,6 +83,7 @@ class CmusRemote {
             print(error)
         }
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
+        try! outputPipe.fileHandleForReading.close()
         if let image = NSImage(data: outputData) {
             return image
         }
@@ -115,6 +116,7 @@ class CmusRemote {
             fatalError("Could not run cmus-remote")
         }
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
+        try! outputPipe.fileHandleForReading.close()
         let output = String(decoding: outputData, as: UTF8.self)
         return output
     }
